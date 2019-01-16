@@ -6,6 +6,7 @@ import shutil
 # Receives a manipulated csv (final_database.csv) with the 7000 images and respective labels as input.
 # Creates 1000 train folders (1 for each class 1 ... 1000)
 # Moves 7000 images to their respective directories.
+# Testing Git.
 
 def create_dataset(file):
 
