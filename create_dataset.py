@@ -7,6 +7,9 @@ import shutil
 # Creates 1000 train folders (1 for each class 1 ... 1000)
 # Moves 7000 images to their respective directories.
 # Testing Git.
+# Test 2.
+#
+#
 
 def create_dataset(file):
 
