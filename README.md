@@ -63,9 +63,11 @@ Add additional notes about how to deploy this on a live system.
 
 ## Built With
 
-* [Flask](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Keras](https://maven.apache.org/) - Dependency Management
-* [Sqlite3](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [OpenCV](https://github.com/opencv/opencv) - Computer Vision Library
+* [Flask](http://flask.pocoo.org/docs/1.0/) - The web framework used
+* [Keras](https://keras.io/) - Python Deep Learning Library
+* [Sqlite3](https://www.sqlite.org/docs.html) - Database engine
+
 
 ## Authors
 
