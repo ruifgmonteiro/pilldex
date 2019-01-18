@@ -1,6 +1,6 @@
 # Pilldex
 
-* * Pilldex: * * A pill classification system Web API using Convolutional Neural Networks.
+**Pilldex:** A pill recognition REST API using Convolutional Neural Networks.
 
 ## Getting Started
 
