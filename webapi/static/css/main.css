@@ -1,0 +1,90 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+.content-wrapper .flex-center {
+    justify-content: center;
+    text-align: center;
+}
+
+.content-wrapper .content-block {
+    max-height: 350px;
+}
+
+.content-wrapper .content-block .image {
+    height: 275px;
+}
+
+.content-wrapper .content-block.image-section .image {
+    height: 275px;
+    padding-top: 38px;
+}
+
+.content-wrapper .content-block .button {
+    height: 50px;
+    margin-top: 15px;
+}
+
+.content-wrapper .image-section .img-preview {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-wrapper dl dt,
+.content-wrapper dl dd{
+    text-align: left;
+}
+
+.img-preview {
+    width: 215px;
+    height: 218px;
+    position: relative;
+    border: 5px solid #F8F8F8;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    margin-bottom: auto;    
+}
+
+.img-preview>div {
+    width: 100%;
+    height: 100%;
+    background-size: 256px 256px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.btn-custom{
+    background-color: #39D2B4;
+    color: #fff;
+    transition: all .4s;
+    cursor: pointer;
+    width: 125px;
+}
+
+.btn-custom:hover{
+    background: #34495E;
+    color: #39D2B4;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
