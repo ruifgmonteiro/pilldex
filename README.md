@@ -94,5 +94,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## More resources
 
 [Building a simple Keras + deep learning REST API](https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html)
-[Deploy Keras Model with Flask as Web App in 10 Minutes] (https://github.com/mtobeiyf/keras-flask-deploy-webapp)
+[Deploy Keras Model with Flask as Web App in 10 Minutes](https://github.com/mtobeiyf/keras-flask-deploy-webapp)
 
