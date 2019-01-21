@@ -6,6 +6,12 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+- Clone this repo 
+- Install requirements
+- Train the model
+- Run the script
+- Check http://localhost:5000
+
 ### Prerequisites
 
 - OpenCV
@@ -15,59 +21,61 @@ These instructions will get you a copy of the project up and running on your loc
 - CUDA
 - Flask
 
-```
-Give examples
-```
+## Local Installation
 
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+### Clone the repo
+```shell
+$ git clone https://github.com/ruifgmonteiro/pilldex.git
 ```
 
-And repeat
+### Install requirements
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```shell
+$ pip install -r requirements.txt
 ```
 
-### And coding style tests
+Make sure you have the following installed:
+- tensorflow
+- keras
+- flask
+- pillow
+- h5py
+- gevent
+- sqlite3
 
-Explain what these tests test and why
+### Run with Python
 
+Python 2.7 or 3.5+ are supported and tested.
+
+#### Train the network.
+
+```shell
+$ python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 ```
-Give an example
+
+#### Check training progress in Tensorboard.
+
+```shell
+$ tensorboard --logdir=logs/ --port=8101
+```
+
+#### Run the webapp.
+
+```shell
+$ python app.py
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system.
+Soon: Deploying webapp in Heroku.
 
 ## Built With
 
 * [OpenCV](https://github.com/opencv/opencv) - Computer Vision Library
 * [Flask](http://flask.pocoo.org/docs/1.0/) - The web framework used
-* [Keras](https://keras.io/) - Python Deep Learning Library
+* [Keras](https://keras.io/) - Python high level deep learning library
+* [Tensorflow](https://www.tensorflow.org/) - An open source machine learning library for research and production.
 * [Sqlite3](https://www.sqlite.org/docs.html) - Database engine
-
 
 ## Authors
 
@@ -83,5 +91,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 * Adrian Rosebrock from PyImageSearch
 
-Teste commit
+## More resources
+
+[Building a simple Keras + deep learning REST API](https://blog.keras.io/building-a-simple-keras-deep-learning-rest-api.html)
+[Deploy Keras Model with Flask as Web App in 10 Minutes] (https://github.com/mtobeiyf/keras-flask-deploy-webapp)
 
