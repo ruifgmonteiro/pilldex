@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 '''
-    File name: connect_db_query.py
+    File name: train.py
     Author: Rui Monteiro
-    Date created: 16/01/2019
-    Date last modified: 16/01/2019
+    Date created: 20/10/2018
+    Date last modified: 21/11/2018
     Python Version: 3.6
 
 # USAGE
@@ -11,12 +11,7 @@
 
 # tensorboard --logdir=logs/ --port=8101
 '''
-
-# set the matplotlib backend so figures can be saved in the background
 import matplotlib
-#matplotlib.use("Agg")
-
-# import the necessary packages
 from keras.preprocessing.image import ImageDataGenerator
 from keras.optimizers import Adam, SGD
 from keras.preprocessing.image import img_to_array
