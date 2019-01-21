@@ -2,6 +2,7 @@
 
 The dataset must be structured in the following form:
 
+```shell
 dataset/
     1/
         img_1.jpg
@@ -13,5 +14,5 @@ dataset/
         ...
     999/
         ...
-
+```
 Each class of images must have its own directory containing all the images to train and test the network.
