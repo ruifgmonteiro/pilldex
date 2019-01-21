@@ -1,7 +1,16 @@
+#!/usr/bin/env python
+'''
+    File name: connect_db_query.py
+    Author: Rui Monteiro
+    Date created: 16/01/2019
+    Date last modified: 16/01/2019
+    Python Version: 3.6
+
 # USAGE
 # python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 
 # tensorboard --logdir=logs/ --port=8101
+'''
 
 # set the matplotlib backend so figures can be saved in the background
 import matplotlib
