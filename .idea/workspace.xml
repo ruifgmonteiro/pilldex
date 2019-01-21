@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef9e008f-9e97-4047-91d6-27cf47d69d06" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="ef9e008f-9e97-4047-91d6-27cf47d69d06" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,13 +20,22 @@
         <entry file="file://$PROJECT_DIR$/teste.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
-              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teste_branch.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="teste_branch.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/teste_branch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="21" selection-start-column="21" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Teste_folder.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webapi/Teste_folder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="19" selection-start-column="19" selection-end-column="19" />
@@ -60,6 +67,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/teste.py" />
         <option value="$PROJECT_DIR$/teste_branch.py" />
+        <option value="$PROJECT_DIR$/webapi/Teste_folder.py" />
       </list>
     </option>
   </component>
@@ -82,6 +90,11 @@
             <path>
               <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
               <item name="pilldex" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pilldex" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -157,17 +170,31 @@
       <option name="project" value="LOCAL" />
       <updated>1548066401530</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Test new branch.">
+      <created>1548066778679</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1548066778679</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add webapi folder.">
+      <created>1548066868475</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1548066868475</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19391635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19391635" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" visible="true" weight="0.30152145" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5006337" side_tool="true" visible="true" weight="0.30152145" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49936628" visible="true" weight="0.30152145" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32918397" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -216,7 +243,8 @@
     <MESSAGE value="Testar o Github." />
     <MESSAGE value="Test step 3." />
     <MESSAGE value="Test new branch." />
-    <option name="LAST_COMMIT_MESSAGE" value="Test new branch." />
+    <MESSAGE value="Add webapi folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add webapi folder." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -229,11 +257,18 @@
     <entry file="file://$PROJECT_DIR$/teste.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teste_branch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapi/Teste_folder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="19" selection-start-column="19" selection-end-column="19" />
