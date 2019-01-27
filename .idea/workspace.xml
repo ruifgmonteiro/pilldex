@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef9e008f-9e97-4047-91d6-27cf47d69d06" name="Default" comment="Add webapi folder.">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/logs/1543020235.0765636/events.out.tfevents.1543020236.ruifgmonteiro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/training/logs/1543267734.086009/events.out.tfevents.1543267736.ruifgmonteiro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_preprocessing/create_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessing/create_dataset.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +18,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_preprocessing/create_dataset.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+            <state relative-caret-position="-42">
+              <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <element signature="e#150#160#0" expanded="true" />
               </folding>
@@ -104,6 +106,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/training/logs" />
       <recent name="$PROJECT_DIR$/webapi/test_images" />
     </key>
   </component>
@@ -193,7 +196,21 @@
       <option name="project" value="LOCAL" />
       <updated>1548610352181</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add webapi folder.">
+      <created>1548610486088</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1548610486088</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add webapi folder.">
+      <created>1548610499732</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1548610499732</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -211,8 +228,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32918397" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5013165" side_tool="true" visible="true" weight="0.280837" />
-      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4986835" visible="true" weight="0.280837" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5013165" side_tool="true" visible="true" weight="0.21475771" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4986835" visible="true" weight="0.21475771" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32918397" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -292,8 +309,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_preprocessing/create_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="-42">
+          <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
           <folding>
             <element signature="e#150#160#0" expanded="true" />
           </folding>
