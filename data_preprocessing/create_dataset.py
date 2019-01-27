@@ -2,7 +2,7 @@
     File name: create_dataset.py
     Author: Rui Monteiro
     Date created: 10/10/2018
-    Date last modified: 21/11/2018
+    Date last modified: 22/11/2018
     Python Version: 3.6
     Description: Auxiliar script to group dataset images into folders.
 '''
