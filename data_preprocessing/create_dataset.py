@@ -4,6 +4,7 @@
     Date created: 10/10/2018
     Date last modified: 21/11/2018
     Python Version: 3.6
+    Description: Auxiliar script to group dataset images into folders.
 '''
 
 import csv
@@ -11,13 +12,13 @@ import os
 import errno
 import shutil
 
-sorted_csv = '/home/ruifgmonteiro/Desktop/ALTER/sorted_gtt.csv'
-csv_with_labels = '/home/ruifgmonteiro/Desktop/ALTER/gtt_with_labels.csv'
-database = '/home/ruifgmonteiro/Desktop/ALTER/final_database.csv'
+sorted_csv = '/home/ruifgmonteiro/Desktop/dataset_creation/sorted_gtt.csv'
+csv_with_labels = '/home/ruifgmonteiro/Desktop/dataset_creation/gtt_with_labels.csv'
+database = '/home/ruifgmonteiro/Desktop/dataset_creation/final_database.csv'
 
-dr = '/home/ruifgmonteiro/Desktop/ALTER/dr'
-dc = '/home/ruifgmonteiro/Desktop/ALTER/dc'
-train = '/home/ruifgmonteiro/Desktop/ALTER/train'
+dr = '/home/ruifgmonteiro/Desktop/dataset_creation/dr'  # reference images
+dc = '/home/ruifgmonteiro/Desktop/dataset_creation/dc'  # consumer images
+train = '/home/ruifgmonteiro/Desktop/dataset_creation/train'
 
 # Takes a sorted ground truth table (sorted_gtt.csv) and adds the labels to the respective reference
 # and consumer images. Returns a list with the following pattern: [ref_image | cons_image | class]
@@ -62,10 +63,7 @@ def preprocess_csv(file):
 
     return total
 
-# Writes the list returned by the previous function and writes it to a new csv: gtt_with_labels.
-
 def write_new_csv(file):
-    #new_file = '/home/ruifgmonteiro/Desktop/csv_desenvolvimentos/CSV_Handling/gtt_with_labels.csv'
     old_csv_list = preprocess_csv(sorted_csv)
     with open(csv_with_labels, 'w', newline='') as newCsv:
         csv_writer = csv.writer(newCsv)
@@ -73,10 +71,6 @@ def write_new_csv(file):
     print('Writing completed.')
 
     return newCsv
-
-# Receives a manipulated csv (final_database.csv) with the 7000 images and respective labels as input.
-# Creates 1000 train folders (1 for each class 1 ... 1000)
-# Moves 7000 images to their respective directories.
 
 def create_dataset(file):
 
