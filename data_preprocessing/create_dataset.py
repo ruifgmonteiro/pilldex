@@ -87,14 +87,13 @@ def create_dataset(file):
             if e.errno != errno.EEXIST:
                 raise
 
-    # Reads csv and appends it to a list
     img_folder_list = []
     with open(database, 'r') as f:
         csv_reader = csv.reader(f, delimiter=';')
         for i in csv_reader:
             img_folder_list.append(i)
 
-    # Moves the images from source folders (dc or dr) to respective train folders
+    # Move the images from source folders (dc or dr) to respective train folders.
     for file in img_folder_list:
         if file[0] in os.listdir(dr):
             print(str(file[0]) + " exists in dr.")
