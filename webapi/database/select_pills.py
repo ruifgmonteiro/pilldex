@@ -1,3 +1,12 @@
+'''
+    File name: select_pills.py
+    Author: Rui Monteiro
+    Date created: 20/10/2018
+    Date last modified: 21/11/2018
+    Python Version: 3.6
+'''
+
+
 import sqlite3
 from sqlite3 import Error
  
