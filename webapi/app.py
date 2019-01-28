@@ -1,16 +1,15 @@
+'''
+    File name: app.py
+    Author: Rui Monteiro
+    Date created: 20/10/2018
+    Date last modified: 21/11/2018
+    Python Version: 3.6
+'''
 from __future__ import division, print_function
-# coding=utf-8
-import sys
 import os
-import glob
-import re
 import numpy as np
-
 # Keras
-from keras.applications.imagenet_utils import preprocess_input, decode_predictions
 from keras.models import load_model
-from keras.preprocessing import image
-
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
 from flask import jsonify
@@ -19,15 +18,12 @@ from gevent.pywsgi import WSGIServer
 import pickle
 import cv2
 from keras.preprocessing.image import img_to_array
+# Database
 import sqlite3
+from sqlite3 import Error
 
-# Define a flask app
 app = Flask(__name__)
-
-# Model saved with Keras model.save()
 MODEL_PATH = 'models/model.h5'
-
-# Load your trained model
 model = load_model(MODEL_PATH)
 print('Model loaded. Check http://127.0.0.1:5000/')
 
@@ -35,28 +31,10 @@ print('Model loaded. Check http://127.0.0.1:5000/')
 #----------------------------------------------------------------------------------------------
 # 1       | LILLY 3228 25mg               | atomoxetine             | CNS stimulants
 # 2       | LILLY 3229 40mg               | atomoxetine             | CNS stimulants
-# 3       | LILLY 3238 18mg               | atomoxetine             | CNS stimulants
-# 4       | LILLY 3239 60 mg              | atomoxetine             | CNS stimulants
-# 5       | LILLY 3250 80 mg              | atomoxetine             | CNS stimulants
-# 6       | LILLY 3251 100 mg             | atomoxetine             | CNS stimulants
-# 7       | Cialis 10 mg                  | tadalafil               | Impotence agents
-# 8       | Cialis 20 mg                  | tadalafil               | Impotence agents
-# 9       | Kombiglyze XR 2.5/1000 4222   | metformin/saxagliptin   | Antidiabetic combinations
-# 10      | Roche 75 mg                   | oseltamivir             | Neuraminidase inhibitors
-# 50      | SYNTHROID 75                  | levothyroxine           | Thyroid drugs
+# ...
 # 100     | Risperidone 93 225 0.5mg      | risperidone             | Atypical antipsychotics
-
-# Database
-import sqlite3
-from sqlite3 import Error
- 
  
 def create_connection(db_file):
-    """ create a database connection to the SQLite database
-        specified by the db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
     try:
         conn = sqlite3.connect(db_file)
         return conn
@@ -66,12 +44,6 @@ def create_connection(db_file):
     return None 
  
 def get_pill_name(conn, pill_id):
-    """
-    Query pills by their pill id
-    :param conn: the Connection object
-    :param priority:
-    :return:
-    """
     cur = conn.cursor()
     cur.execute("SELECT name FROM pills WHERE id=?", (pill_id,))
     rows = cur.fetchall()
@@ -82,12 +54,6 @@ def get_pill_name(conn, pill_id):
     return pill_name
 
 def get_pill_generic_name(conn, pill_id):
-    """
-    Query pills by their pill id
-    :param conn: the Connection object
-    :param priority:
-    :return:
-    """
     cur = conn.cursor()
     cur.execute("SELECT generic_name FROM pills WHERE id=?", (pill_id,))
     rows = cur.fetchall()
@@ -98,12 +64,6 @@ def get_pill_generic_name(conn, pill_id):
     return generic_name
 
 def get_pill_drug_class(conn, pill_id):
-    """
-    Query pills by their pill id
-    :param conn: the Connection object
-    :param priority:
-    :return:
-    """
     cur = conn.cursor()
     cur.execute("SELECT drug_class FROM pills WHERE id=?", (pill_id,))
     rows = cur.fetchall()
@@ -114,12 +74,6 @@ def get_pill_drug_class(conn, pill_id):
     return drug_class
 
 def get_pill_error(conn, error_key):
-    """
-    Query pills by their pill id
-    :param conn: the Connection object
-    :param priority:
-    :return:
-    """
     cur = conn.cursor()
     cur.execute("SELECT error_text FROM pill_errors WHERE error_key=?", (error_key,))
     rows = cur.fetchall()
@@ -137,11 +91,11 @@ def index():
 @app.route('/predict', methods=['GET', 'POST'])
 def upload():
     
-    # Connecting to the database.
+    # Connect to the database.
     database = "pills.db"
     conn = create_connection(database)
 
-    # Initializing the output dictionary (JSON format).
+    # Initialize the output dictionary.
     data = {"success": False}
 
     if request.method == 'POST':
@@ -168,15 +122,9 @@ def upload():
         # Predicting the label of the input image.
         print("[INFO] classifying image...")
         proba = model.predict(image)[0]
-        print("Proba:", proba)
         idx = np.argmax(proba)
-        print("idx:", idx)                # index 0 in array relates to class 1
-
         label = lb.classes_[idx]
-        print("Label:", label)
-
         new_label = "{}: {:.2f}%".format(label, proba[idx] * 100)
-        print(new_label)
 
         # Prediction probability.
         prob = proba[idx] * 100
@@ -189,12 +137,6 @@ def upload():
             if new_label:
                 data["success"] = True
 
-            # Retrieving remaining info from database (Pill_name, Generic_name and Drug Class). 
-            database = "pills.db"
-     
-            # Connecting to the database.
-            conn = create_connection(database)
-
             data["pill_id"] = label  
             data["pill_name"] = get_pill_name(conn, label)
             data["generic name"] = get_pill_generic_name(conn, label)
@@ -206,7 +148,6 @@ def upload():
 
 if __name__ == '__main__':
     #app.run(port=5002, debug=True)
-
     # Serve the app with gevent
     http_server = WSGIServer(('', 5000), app)
     http_server.serve_forever()
