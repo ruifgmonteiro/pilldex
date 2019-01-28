@@ -38,7 +38,7 @@ def resize_crop_consumer_image(img_path):
 	cv2.imwrite(str(img_path), cropped_img)
 
 def preprocess():
-	rootdir = '/Notebooks/Pilldex/dataset/train '
+	rootdir = '/pilldex/dataset'
 	for subdir, dirs, files in os.walk(rootdir):
 		for file in files:
 			path = os.path.join(subdir, file)
