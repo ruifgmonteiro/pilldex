@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef9e008f-9e97-4047-91d6-27cf47d69d06" name="Default" comment="Add csv.">
-      <change afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/pillnet.py" afterDir="false" />
+    <list default="true" id="ef9e008f-9e97-4047-91d6-27cf47d69d06" name="Default" comment="Logs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/training/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/training/train.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/data_preprocessing/final_database.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="462">
-              <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -40,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/data_preprocessing/preprocess.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="714">
-              <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+              <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -48,11 +45,62 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            <state>
+              <caret selection-end-line="5" selection-end-column="23" />
+              <folding>
+                <element signature="e#315#371#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapi/database/create_db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="6" selection-end-column="3" />
+              <folding>
+                <element signature="e#145#159#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapi/database/insert_db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="7" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webapi/database/select_pills.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="21">
+              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webapi/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3129">
+              <caret line="149" column="35" selection-start-line="149" selection-start-column="35" selection-end-line="149" selection-end-column="35" />
+              <folding>
+                <element signature="e#143#190#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,6 +126,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>np</find>
+      <find>glob</find>
+      <find>sqlite3</find>
+      <find>conn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -101,6 +152,10 @@
         <option value="$PROJECT_DIR$/models/pillnet/PillNet.py" />
         <option value="$PROJECT_DIR$/models/pillnet/pillnet.py" />
         <option value="$PROJECT_DIR$/training/train.py" />
+        <option value="$PROJECT_DIR$/webapi/database/create_db.py" />
+        <option value="$PROJECT_DIR$/webapi/database/insert_db.py" />
+        <option value="$PROJECT_DIR$/webapi/database/select_pills.py" />
+        <option value="$PROJECT_DIR$/webapi/app.py" />
       </list>
     </option>
   </component>
@@ -123,6 +178,23 @@
               <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
               <item name="pilldex" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pilldex" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pilldex" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pilldex" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pilldex" type="462c0819:PsiDirectoryNode" />
+              <item name="webapi" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -138,11 +210,11 @@
       <recent name="$PROJECT_DIR$/models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/models/pillnet" />
       <recent name="$PROJECT_DIR$/training" />
       <recent name="$PROJECT_DIR$/data_preprocessing" />
       <recent name="$PROJECT_DIR$/training/logs" />
-      <recent name="$PROJECT_DIR$/webapi/test_images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -287,7 +359,28 @@
       <option name="project" value="LOCAL" />
       <updated>1548634073561</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add csv.">
+      <created>1548635198773</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1548635198773</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Logs.">
+      <created>1548635290045</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1548635290045</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Logs.">
+      <created>1548635699154</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1548635699154</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -363,7 +456,8 @@
     <MESSAGE value="Add webapi folder." />
     <MESSAGE value="Update." />
     <MESSAGE value="Add csv." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add csv." />
+    <MESSAGE value="Logs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Logs." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/create_dataset.py" />
@@ -382,7 +476,7 @@
     <entry file="file://$PROJECT_DIR$/data_preprocessing/final_database.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
-          <caret line="22" column="51" lean-forward="true" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -399,7 +493,7 @@
     <entry file="file://$PROJECT_DIR$/data_preprocessing/preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
-          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -415,8 +509,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/training/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        <state>
+          <caret selection-end-line="5" selection-end-column="23" />
+          <folding>
+            <element signature="e#315#371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapi/database/create_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="3" />
+          <folding>
+            <element signature="e#145#159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapi/database/insert_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="7" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapi/database/select_pills.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webapi/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3129">
+          <caret line="149" column="35" selection-start-line="149" selection-start-column="35" selection-end-line="149" selection-end-column="35" />
+          <folding>
+            <element signature="e#143#190#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
