@@ -1,5 +1,12 @@
+'''
+    File name: preprocess.py
+    Author: Rui Monteiro
+    Date created: 10/10/2018
+    Date last modified: 22/11/2018
+    Python Version: 3.6
+'''
+
 import cv2
-import numpy as np
 import os
 
 def resize_reference_image(img_path):
