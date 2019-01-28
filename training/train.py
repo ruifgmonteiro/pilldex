@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 '''
     File name: train.py
     Author: Rui Monteiro
@@ -6,18 +5,17 @@
     Date last modified: 21/11/2018
     Python Version: 3.6
 
-# USAGE
-# python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
+Train:
+ > python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 
-# tensorboard --logdir=logs/ --port=8101
+Check training process in Tensorboard:
+ > tensorboard --logdir=logs/ --port=8101
 '''
-import matplotlib
 from keras.preprocessing.image import ImageDataGenerator
-from keras.optimizers import Adam, SGD
+from keras.optimizers import Adam
 from keras.preprocessing.image import img_to_array
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
-from pyimagesearch.smallervggnet import SmallerVGGNet
 import matplotlib.pyplot as plt
 from imutils import paths
 import numpy as np
@@ -26,182 +24,188 @@ import random
 import pickle
 import cv2
 import os
-from phdnet.phdnet import PHDNet
-from pyimagesearch.smallervggnet import SmallerVGGNet
-import Augmentor
-from Augmentor.Pipeline import Pipeline
-from sklearn.metrics import classification_report,confusion_matrix
-import itertools
+from keras import backend as K
+import importlib
 from keras.callbacks import TensorBoard
-from time import time
 
-# construct the argument parse and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-d", "--dataset", required=True,
-    help="path to input dataset (i.e., directory of images)")
-ap.add_argument("-m", "--model", required=True,
-    help="path to output model")
-ap.add_argument("-l", "--labelbin", required=True,
-    help="path to output label binarizer")
-ap.add_argument("-p", "--plot", type=str, default="plot.png",
-    help="path to output accuracy/loss plot")
-args = vars(ap.parse_args())
 
-# initialize the number of epochs to train for, initial learning rate,
-# batch size, and image dimensions
-online_data_augment=False   
-EPOCHS = 150
-INIT_LR = 2e-5
-BS = 32
-IMAGE_DIMS = (96, 96, 3)
+def set_keras_backend(backend):
+    print("A acertar o backend e libertar memória da grafica")
+    if K.backend() != backend:
+        os.environ['KERAS_BACKEND'] = backend
+        importlib.reload(K)
+        assert K.backend() == backend
+    if backend == "tensorflow":
+        K.get_session().close()
+        cfg = K.tf.ConfigProto()
+        cfg.gpu_options.allow_growth = True
+        #cfg.gpu_options.allocator_type = 'BFC'
+        K.set_session(K.tf.Session(config=cfg))
+        K.clear_session()
 
-# initialize the data and labels
-data = []
-labels = []
+def get_arguments():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-d", "--dataset", required=True,
+                    help="path to input dataset (i.e., directory of images)")
+    ap.add_argument("-m", "--model", required=True,
+                    help="path to output model")
+    ap.add_argument("-l", "--labelbin", required=True,
+                    help="path to output label binarizer")
+    ap.add_argument("-p", "--plot", type=str, default="plot.png",
+                    help="path to output accuracy/loss plot")
+    args = vars(ap.parse_args())
 
-# grab the image paths and randomly shuffle them
-print("[INFO] loading images...")
-imagePaths = sorted(list(paths.list_images(args["dataset"])))
-random.seed(42)
-random.shuffle(imagePaths)
+    return args
 
-# loop over the input images
-for imagePath in imagePaths:
-    # load the image, pre-process it, and store it in the data list
-    image = cv2.imread(imagePath)
-    image = cv2.resize(image, (IMAGE_DIMS[1], IMAGE_DIMS[0]))
-    image = img_to_array(image)
-    data.append(image)
- 
-    # extract the class label from the image path and update the
-    # labels list
-    label = imagePath.split(os.path.sep)[-2]
-    labels.append(label)    
 
-# scale the raw pixel intensities to the range [0, 1]
-data = np.array(data, dtype="float") / 255.0
-labels = np.array(labels)
-print("[INFO] data matrix: {:.2f}MB".format(
-    data.nbytes / (1024 * 1000.0)))
+def print_history_accuracy(history):
+    plt.plot(history.history['acc'])
+    plt.plot(history.history['val_acc'])
+    plt.title('model accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()
 
-# binarize the labels
-lb = LabelBinarizer()
-labels = lb.fit_transform(labels)
+def print_history_loss(history):
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('model loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'test'], loc='upper left')
+    plt.show()        
 
-# partition the data into training and testing splits using 80% of
-# the data for training and the remaining 20% for testing
-(trainX, testX, trainY, testY) = train_test_split(data,
-    labels, test_size=0.2, random_state=42)
 
-# initialize the model
-print("[INFO] compiling model...")
-model = SmallerVGGNet.build(width=IMAGE_DIMS[1], height=IMAGE_DIMS[0], depth=IMAGE_DIMS[2], classes=len(lb.classes_))
-opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
-model.compile(loss="categorical_crossentropy", optimizer=opt, metrics=["accuracy"])
+def load_dataset(img_dims):
 
-# Tensorboard Log
-#tensorboard = TensorBoard(log_dir='Log/', histogram_freq=0, write_graph=True, write_images=True)
-tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
+    args = get_arguments()
+    # initialize the image dimensions
+    data = []
+    labels = []
 
-# Training the network
-print("[INFO] training network...")
-H = model.fit(trainX, trainY, batch_size=BS, epochs=EPOCHS, validation_data=(testX, testY), callbacks=[tensorboard])
+    # Shuffle data.
+    print("[INFO] loading images...")
+    imagePaths = sorted(list(paths.list_images(args["dataset"])))
+    print(imagePaths)
+    random.seed(42)
+    random.shuffle(imagePaths)
 
-# save the model to disk
-print("[INFO] serializing network...")
-model.save(args["model"])
+    # loop over the input images
+    for imagePath in imagePaths:
+        # load the image, pre-process it, and store it in the data list.
+        print(imagePath)
+        image = cv2.imread(imagePath)
+        image = cv2.resize(image, (img_dims[1], img_dims[0]))
+        image = img_to_array(image)
+        data.append(image)
 
-# save the label binarizer to disk
-print("[INFO] serializing label binarizer...")
-f = open(args["labelbin"], "wb")
-f.write(pickle.dumps(lb))
-f.close()
+        # extract the class label from the image path and update the
+        # labels list
+        label = imagePath.split(os.path.sep)[-2]
+        labels.append(label)      
 
-model_json = model.to_json()
+    # Scale the raw pixel intensities to the range [0, 1].
+    data = np.array(data, dtype="float") / 255.0
+    labels = np.array(labels)
+    print("[INFO] data matrix: {:.2f}MB".format(
+        data.nbytes / (1024 * 1000.0)))
+    
+    # Binarize the labels.
+    lb = LabelBinarizer()
+    labels = lb.fit_transform(labels)
 
-with open("model.json", "w") as json_file:
-  json_file.write(model_json)
+    # 80% for training, 20% for validation.
+    (trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.2, random_state=42)
 
-model.save("model.h5")
+    return trainX, testX, trainY, testY, lb
 
-# Plot the training and validation accuracy
-plt.plot(H.history['acc'])
-plt.plot(H.history['val_acc'])
-plt.title('model accuracy')
-plt.ylabel('accuracy')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
+def compile_train_model(data_augmentation):
+    
+    args = get_arguments()
+    # Hyperparameters.
+    EPOCHS = 150
+    INIT_LR = 2e-5
+    BS = 32
+    IMAGE_DIMS = (96, 96, 3)
+    trainX, testX, trainY, testY, lb = load_dataset(IMAGE_DIMS)
 
-# Plot the training and validation loss
-plt.plot(H.history['loss'])
-plt.plot(H.history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
-plt.xlabel('epoch')
-plt.legend(['train', 'test'], loc='upper left')
-plt.show()
+    # Initialize the model.
+    print("[INFO] compiling model...")
+    model = models.build(width=IMAGE_DIMS[1],
+                         height=IMAGE_DIMS[0],
+                         depth=IMAGE_DIMS[2],
+                         classes=len(lb.classes_))
+   
 
-#   Avaliação   final   com os  casos   de  teste  - Evaluate
-scores  =   model.evaluate(testX,  testY, verbose=1)  
-print('Scores:  ',  scores) 
-print("Accuracy:    %.2f%%" %   (scores[1]*100))    
-print("Erro modelo:    %.2f%%" %   (100-scores[1]*100))
+    opt = Adam(lr=INIT_LR,
+               decay=INIT_LR / EPOCHS)
 
-# Plotting the confusion matrix
-def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix', cmap=plt.cm.Blues):
-    """
-    This function prints and plots the confusion matrix.
-    Normalization can be applied by setting `normalize=True`.
-    """
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
-    plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
+    model.compile(loss="categorical_crossentropy",
+                  optimizer=opt,
+                  metrics=["accuracy"])
 
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
+    tensorboard = TensorBoard(log_dir='Log/', histogram_freq=0,
+                              write_graph=True, write_images=False)
+
+    if not data_augmentation:
+        print('Not using data augmentation.')
+        print("[INFO] training network...")
+        hist = model.fit(trainX, trainY, 
+                         batch_size=BS,
+                         nb_epoch=EPOCHS,
+                         validation_data=(testX, testY),
+                         callbacks=[tensorboard],
+                         shuffle=True)
     else:
-        print('Confusion matrix, without normalization')
+        print('Using real-time data augmentation.')
+        # This will do preprocessing and real-time data augmentation:
+        aug = ImageDataGenerator(rotation_range=25,
+                                 width_shift_range=0.1,
+                                 height_shift_range=0.1,
+                                 shear_range=0.2,
+                                 zoom_range=0.2,
+                                 horizontal_flip=True,
+                                 fill_mode="nearest")
+ 
+        print("[INFO] training network...")
+        datagen.fit(trainX)
+        # Fit the model on the batches generated by datagen.flow().
+        print(trainX.shape[0])
+        hist = model.fit_generator(gen_data.flow(trainX,
+                                                 trainY,
+                                                 batch_size=BS,
+                                                 ),
+                                  validation_data = (testX, testY),
+                                  steps_per_epoch= trainX.shape[0] // BS,
+                                  epochs=EPOCHS,
+                                  verbose=1,
+                                  callbacks=[tensorboard],
+                                  )
 
-    print(cm)
+    print_history_accuracy(hist)
+    print_history_loss(hist)
 
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, cm[i, j], horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
+    # save the model to disk
+    print("[INFO] serializing network...")
+    model.save(args["model"])
 
-    plt.tight_layout()
-    plt.ylabel('True label')
-    plt.xlabel('Predicted label')
+    # save the label binarizer to disk
+    print("[INFO] serializing label binarizer...")
+    f = open(args["labelbin"], "wb")
+    f.write(pickle.dumps(lb))
+    f.close()
 
-# Printing the confusion matrix
-Y_pred = model.predict(testX)
-print(Y_pred)
-y_pred = np.argmax(Y_pred, axis=1)
-print(y_pred)
+    #   Avaliação   final   com os  casos   de  teste  - Evaluate
+    scores  =   model.evaluate(testX,  testY, verbose=1)  
+    print('Scores:  ',  scores) 
+    print("Accuracy:    %.2f%%" %   (scores[1]*100))    
+    print("Erro modelo:    %.2f%%" %   (100-scores[1]*100))
+    
+ def main():
+    set_keras_backend("tensorflow")
+    args = get_arguments()
+    compile_train_model(data_augmentation=True)
 
-target_names = []
-for i in range(1,101):
-    target_names.append("class_" + str(i))
-    i+=1
-print(target_names)
-print(testY) 
-print(classification_report(np.argmax(testY ,axis=1), y_pred,target_names=target_names))
-
-print(confusion_matrix(np.argmax(testY,axis=1), y_pred))
-
-# Compute confusion matrix
-cnf_matrix = (confusion_matrix(np.argmax(testY,axis=1), y_pred))
-
-np.set_printoptions(precision=2)
-
-plt.figure()
-
-# Plot non-normalized confusion matrix
-plot_confusion_matrix(cnf_matrix, classes=target_names,
-                      title='Confusion matrix')
-plt.figure()
-plt.show()       
+if __name__ == '__main__':
+    main()
