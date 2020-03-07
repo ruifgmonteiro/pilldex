@@ -16,8 +16,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ![Pilldex](https://raw.githubusercontent.com/ruifgmonteiro/pilldex/master/example.png)
 
-/home/ruifgmonteiro/Desktop/example.png
-
 ### Prerequisites
 
 - OpenCV
