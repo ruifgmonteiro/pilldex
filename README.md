@@ -94,6 +94,8 @@ $ cd /pilldex/train
 $ python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 ```
 
+This will output two files: pilldex.model and lb.pickle.
+
 #### Check training progress in Tensorboard.
 
 ```shell
@@ -122,15 +124,13 @@ Run the script to insert the data in the table:
 $ python insert_db.py
 ```
 
-#### Run the webapp.
+#### Run the application
 
 ```shell
 $ python app.py
 ```
 
-## Deployment
-
-Soon: Deploying webapp in Heroku.
+After the app is running, upload the images you want to classify and check the results!
 
 ## Built With
 
