@@ -85,7 +85,7 @@ Make sure you have the following installed:
 
 Python 2.7 or 3.5+ are supported and tested.
 
-#### Train the network.
+#### Train the model
 
 
 ```shell
