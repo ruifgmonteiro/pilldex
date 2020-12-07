@@ -94,12 +94,10 @@ $ cd /pilldex/train
 $ python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 ```
 
-This will output two files: pilldex.model and lb.pickle.
-
 #### Check training progress in Tensorboard.
 
 ```shell
-$ tensorboard --logdir=logs/ --port=8101
+$ tensorboard --logdir=Log/ --port=8101
 ```
 
 #### Create the database to store the pills data
