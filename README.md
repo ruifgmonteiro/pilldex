@@ -20,19 +20,53 @@ These instructions will get you a copy of the project up and running on your loc
 
 - OpenCV
 - Keras
-- Python 3.6
 - Sqlite3
 - CUDA
 - Flask
 
 ## Local Installation
 
-### Clone the repo
+#### Clone the repo
+
 ```shell
 $ git clone https://github.com/ruifgmonteiro/pilldex.git
 ```
 
-### Install requirements
+#### Change directoy
+
+```shell
+$ cd pilldex
+```
+
+#### Create virtual environment
+
+It is recommended to create a virtual environment to run the application so you can package your application without messing with other python installations. 
+
+You just need to give this environment a name and run the following commands:
+
+```shell
+$ python3 -m venv ./<env_name>
+```
+
+Activate your python environment:
+
+```shell
+$ source <env_name>/bin/activate
+```
+
+If you want to deactivate it just run 
+
+```shell 
+deactivate
+```
+
+#### Install necessary python packages and modules 
+
+```shell
+pip install .
+```
+
+#### Install requirements
 
 ```shell
 $ pip install -r requirements.txt
@@ -53,7 +87,10 @@ Python 2.7 or 3.5+ are supported and tested.
 
 #### Train the network.
 
+
 ```shell
+$ cd /pilldex/train
+
 $ python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 ```
 
@@ -61,6 +98,28 @@ $ python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 
 ```shell
 $ tensorboard --logdir=logs/ --port=8101
+```
+
+#### Create the database to store the pills data
+
+Before running the application you need to setup the database and create the table to store the relevant information.
+
+Change to the actual database directory:
+
+```shell
+$ cd /pilldex/app/database
+```
+
+Run the script to create both the pills database and table:
+
+```shell
+$ python create_db.py 
+```
+
+Run the script to insert the data in the table:
+
+```shell
+$ python insert_db.py
 ```
 
 #### Run the webapp.
