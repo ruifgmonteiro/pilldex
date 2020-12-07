@@ -3,7 +3,7 @@ Train:
  > python train.py --dataset dataset --model pilldex.model --labelbin lb.pickle
 
 Check training process in Tensorboard:
- > tensorboard --logdir=logs/ --port=8101
+ > tensorboard --logdir=Log/ --port=8101
 '''
 import os
 from keras.preprocessing.image import ImageDataGenerator
