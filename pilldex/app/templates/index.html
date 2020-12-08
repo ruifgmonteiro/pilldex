@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row flex-center">
+    <div class="col-md-6">
+        <div class="content-block">
+            <div class="image">
+                <h2>Pill Classifier</h2>
+                <img src="https://raw.githubusercontent.com/ruifgmonteiro/pilldex/master/webapi/templates/pilldex.png" alt="pilldex.png">
+            </div>
+            <div class="button">
+                <form id="upload-file" method="post" enctype="multipart/form-data">
+                    <label for="imageUpload" class="btn btn-custom">
+                        Upload Image
+                    </label>
+                    <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="content-block image-section" style="display:none;">
+            <div class="image">
+                <div class="img-preview">
+                    <div id="imagePreview">
+                    </div>
+                </div>
+            </div>
+            <div class="button btn-predict-wrapper">
+                <div>
+                    <button type="button" class="btn btn-custom" id="btn-predict">Predict!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row flex-center">
+    <div class="col-10 offset-2 col-md-5 offset-md-1">
+        <div class="loader" style="display:none;"></div>
+        <div id="result" style="margin-top: 40px; display:none;">
+            <dl class="row">
+                <dt class="col-5">Drug class:</dt>
+                <dd class="col-7"><span id="result1"></span></dd>
+                <dt class="col-5">Generic name:</dt>
+                <dd class="col-7"><span id="result2"></span></dd>
+                <dt class="col-5">Pill Id:</dt>
+                <dd class="col-7"><span id="result3"></span></dd>
+                <dt class="col-5">Pill name:</dt>
+                <dd class="col-7"><span id="result4"></span></dd>
+                <dt class="col-5">Probability:</dt>
+                <dd class="col-7"><span id="result5"></span>%</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
